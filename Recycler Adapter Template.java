@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,6 +21,10 @@ import butterknife.ButterKnife;
 public class ${NAME} extends RecyclerView.Adapter<${NAME}.ViewHolder> {
 
     private List<${model_NAME}> list;
+
+  ${NAME}() {
+        list = new ArrayList<>();
+    }
 
 
     @NonNull
@@ -40,7 +44,11 @@ public class ${NAME} extends RecyclerView.Adapter<${NAME}.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return list.size();
+         if (list != null) {
+            return list.size();
+        } else {
+            return 0;
+        }
     }
 
     public void setList(List<${model_NAME}> list) {
@@ -50,7 +58,6 @@ public class ${NAME} extends RecyclerView.Adapter<${NAME}.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
